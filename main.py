@@ -1,9 +1,25 @@
 from datetime import datetime
+from sys import argv
 
 from MyLibs.myTimeLib import round_time_floor
+from MyMockInterface.txtReader import txtReader
+
+
+def Main():
+    print(argv)
+    if len(argv) <= 1:
+        print("file not selected.")
+        return
+
+    for i in range(1, len(argv), 1):
+        currentFile = txtReader(argv[i])
+        while True:
+            line = currentFile.readline()
+            if not line:
+                currentFile.close()
+                break
+            print(line)
 
 
 if __name__ == "__main__":
-    r = round_time_floor(datetime(2017, 2, 26, 12, 58, 0))
-    t = datetime.fromtimestamp(r)
-    print(t)
+    Main()
