@@ -11,7 +11,7 @@ def Main():
     if len(argv) <= 1:
         print("file not selected.")
         return
-    
+
     with open("Configs/Config.yaml", "r") as stream:
         try:
             cfg = yaml.safe_load(stream)
